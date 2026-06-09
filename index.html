@@ -1,340 +1,293 @@
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+KR:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+KR:wght@400;700&family=Nunito:wght@800;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
+
 .wrap{
   font-family:'Noto Sans KR',sans-serif;
-  background:linear-gradient(180deg,#87ceeb 0%,#b0e0ff 40%,#7ecfdf 65%,#5bb8cc 70%,#88c988 70%,#6aaa6a 80%,#4e8a4e 100%);
-  border-radius:16px;overflow:hidden;position:relative;
-  min-height:620px;display:flex;flex-direction:column;align-items:center;
-  padding:0 0 80px;
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;
+  padding-bottom:120px;
+  position:relative;overflow:hidden;
+  background:#87CEEB;
 }
-.sun{position:absolute;top:16px;right:52px;width:32px;height:32px;background:#ffe44d;
-  box-shadow:4px 0 0 #ffe44d,-4px 0 0 #ffe44d,0 4px 0 #ffe44d,0 -4px 0 #ffe44d,
-  8px 0 0 #ffd700,-8px 0 0 #ffd700,0 8px 0 #ffd700,0 -8px 0 #ffd700,
-  6px 6px 0 #ffd700,-6px 6px 0 #ffd700,6px -6px 0 #ffd700,-6px -6px 0 #ffd700;
-  z-index:1;}
-.clouds{position:absolute;top:0;left:0;width:100%;pointer-events:none;z-index:0;}
-.fish1{position:absolute;bottom:68px;font-size:18px;z-index:3;animation:swim1 9s linear infinite;}
-.fish2{position:absolute;bottom:76px;font-size:13px;z-index:3;animation:swim1 6s 3s linear infinite;}
-@keyframes swim1{0%{left:-40px}100%{left:110%}}
-.wave-abs{position:absolute;bottom:50px;left:0;width:100%;z-index:2;pointer-events:none;}
+.sky{position:absolute;top:0;left:0;width:100%;height:60%;background:#87CEEB;z-index:0;}
+.water{position:absolute;top:58%;left:0;width:100%;height:22%;background:#1a7fa8;z-index:0;}
+.sand{position:absolute;top:78%;left:0;width:100%;height:12%;background:#f5dfa0;z-index:0;}
+.sand2{position:absolute;top:86%;left:0;width:100%;height:20%;background:#e8c96e;z-index:0;}
 
-.logo-bar{z-index:10;margin-top:16px;text-align:center;}
-.logo-txt{font-family:'DotGothic16',monospace;font-size:12px;color:#0b3d6e;
-  background:rgba(255,255,255,.78);border:2px solid #0b3d6e;padding:3px 12px;
-  border-radius:4px;letter-spacing:1px;}
+.sun{position:absolute;top:clamp(14px,3vw,24px);right:clamp(30px,6vw,70px);z-index:2;
+  width:clamp(28px,6vw,44px);height:clamp(28px,6vw,44px);background:#FFD700;
+  box-shadow:0 -8px 0 #FFD700,0 8px 0 #FFD700,-8px 0 0 #FFD700,8px 0 0 #FFD700,
+  -6px -6px 0 #FFE44D,6px -6px 0 #FFE44D,-6px 6px 0 #FFE44D,6px 6px 0 #FFE44D,
+  0 -14px 0 #FFF176,0 14px 0 #FFF176,-14px 0 0 #FFF176,14px 0 0 #FFF176;}
 
-/* cards */
-.card{z-index:10;background:rgba(255,255,255,.95);border:3px solid #0b3d6e;
-  border-radius:10px;padding:20px 24px;max-width:510px;width:92%;
-  margin-top:14px;box-shadow:5px 5px 0 #0b3d6e;}
+.cloud{position:absolute;z-index:2;}
+.c1{top:clamp(10px,2.5vw,22px);left:clamp(20px,4vw,50px);}
+.c2{top:clamp(8px,2vw,16px);left:38%;opacity:.75;}
+.c3{top:clamp(14px,3vw,28px);right:clamp(10px,3vw,40px);opacity:.6;}
+
+.bird{position:absolute;top:clamp(30px,7vw,60px);font-size:clamp(14px,3.5vw,20px);z-index:3;animation:flybird 12s linear infinite;}
+@keyframes flybird{0%{left:-30px}100%{left:110%}}
+.fish{position:absolute;bottom:clamp(100px,18vw,145px);font-size:clamp(16px,4vw,22px);z-index:5;animation:swim 8s linear infinite;}
+.fish2{bottom:clamp(112px,20vw,155px);font-size:clamp(12px,3vw,16px);animation:swim 11s 4s linear infinite;}
+@keyframes swim{0%{left:-40px}100%{left:110%}}
+
+.pxwave{position:absolute;bottom:clamp(88px,16vw,128px);left:0;width:100%;z-index:4;pointer-events:none;}
+.decor{position:absolute;bottom:clamp(50px,10vw,70px);left:clamp(16px,4vw,44px);font-size:clamp(26px,6vw,36px);z-index:5;}
+.decor2{position:absolute;bottom:clamp(44px,9vw,60px);right:clamp(20px,5vw,60px);font-size:clamp(22px,5vw,30px);z-index:5;}
+.crab{position:absolute;bottom:clamp(46px,9vw,62px);left:46%;font-size:clamp(16px,4vw,22px);z-index:5;animation:crabwalk 5s ease-in-out infinite alternate;}
+@keyframes crabwalk{0%{transform:translateX(0)}100%{transform:translateX(18px)}}
+
+.logo-bar{z-index:10;margin-top:clamp(14px,4vw,20px);text-align:center;}
+.logo-txt{
+  font-family:'DotGothic16',monospace;
+  font-size:clamp(12px,3vw,14px);
+  color:#083d5e;background:rgba(255,255,255,.88);
+  border:2.5px solid #0077aa;padding:4px 16px;border-radius:4px;letter-spacing:1px;
+}
+
+.card{
+  z-index:10;
+  background:rgba(255,255,255,.97);
+  border:3px solid #0096c7;
+  border-radius:16px;
+  padding:clamp(18px,5vw,26px) clamp(16px,5vw,28px);
+  width:92%;max-width:520px;
+  margin-top:clamp(12px,3vw,16px);
+  box-shadow:5px 5px 0 #005f8a;
+}
 .hidden{display:none!important;}
 
-/* start */
-.t-pixel{font-family:'DotGothic16',monospace;font-size:20px;color:#0b3d6e;line-height:1.45;}
-.t-sub{font-size:13px;color:#555;margin-top:6px;}
-.btn-go{margin-top:16px;font-family:'DotGothic16',monospace;font-size:15px;
-  background:#ffe44d;color:#0b3d6e;border:3px solid #0b3d6e;border-radius:6px;
-  padding:10px 34px;cursor:pointer;box-shadow:4px 4px 0 #0b3d6e;
-  transition:transform .1s;z-index:10;display:block;}
-.btn-go:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #0b3d6e;}
+.s-title{
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(22px,6vw,28px);
+  font-weight:900;color:#0077aa;text-align:center;line-height:1.35;
+}
+.s-sub{font-size:clamp(14px,3.5vw,16px);color:#005f8a;text-align:center;margin-top:10px;font-weight:700;line-height:1.65;}
+.btn-start{
+  display:block;margin:clamp(16px,4vw,20px) auto 0;
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(16px,4.5vw,20px);
+  font-weight:900;background:#ff8c00;color:#fff;
+  border:3px solid #c95f00;border-radius:40px;
+  padding:clamp(12px,3vw,14px) clamp(36px,9vw,48px);
+  cursor:pointer;box-shadow:4px 4px 0 #c95f00;
+  transition:transform .1s;
+}
+.btn-start:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #c95f00;}
 
-/* quiz */
-.prog-wrap{width:100%;height:10px;background:#dceeff;border:2px solid #0b3d6e;
-  border-radius:3px;margin-bottom:14px;overflow:hidden;}
-.prog-fill{height:100%;background:repeating-linear-gradient(90deg,#4fc3f7 0 8px,#29b6f6 8px 16px);transition:width .4s;}
-.q-lbl{font-family:'DotGothic16',monospace;font-size:11px;color:#29b6f6;margin-bottom:3px;}
-.q-emo{font-size:26px;margin-bottom:6px;display:block;}
-.q-txt{font-size:15px;font-weight:700;color:#0b3d6e;line-height:1.55;margin-bottom:14px;white-space:pre-line;}
-.opts{display:flex;flex-direction:column;gap:9px;}
-.opt{font-family:'Noto Sans KR',sans-serif;font-size:13px;background:#f0faff;color:#0b3d6e;
-  border:2px solid #4fc3f7;border-radius:6px;padding:10px 14px;cursor:pointer;
-  text-align:left;box-shadow:3px 3px 0 #4fc3f7;transition:background .15s,transform .1s,box-shadow .1s;}
-.opt:hover{background:#d0f0ff;transform:translate(-1px,-1px);box-shadow:4px 4px 0 #29b6f6;}
-.opt:active{transform:translate(2px,2px);}
-.opt.sel{background:#ffe44d;border-color:#0b3d6e;box-shadow:3px 3px 0 #0b3d6e;}
+.prog-wrap{width:100%;height:13px;background:#ceeef7;border:2px solid #0096c7;border-radius:20px;margin-bottom:clamp(14px,4vw,18px);overflow:hidden;}
+.prog-fill{height:100%;background:#ff8c00;border-radius:20px;transition:width .4s;}
+.qlbl{font-family:'Nunito',sans-serif;font-size:clamp(12px,3vw,14px);font-weight:900;color:#0096c7;margin-bottom:4px;}
+.qemo{font-size:clamp(30px,8vw,38px);display:block;margin-bottom:8px;}
+.qtxt{
+  font-size:clamp(15px,4vw,17px);
+  font-weight:700;color:#003a57;line-height:1.65;
+  margin-bottom:clamp(14px,4vw,18px);white-space:pre-line;
+}
+.opts{display:flex;flex-direction:column;gap:clamp(10px,2.5vw,12px);}
+.opt{
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:clamp(14px,3.8vw,16px);
+  font-weight:700;text-align:left;cursor:pointer;
+  background:#e8f7fd;color:#003a57;
+  border:2.5px solid #48cae4;border-radius:40px;
+  padding:clamp(13px,3.5vw,15px) clamp(18px,5vw,24px);
+  box-shadow:3px 3px 0 #48cae4;
+  transition:transform .1s,background .15s;
+  line-height:1.4;
+}
+.opt:hover{background:#b8ecf7;transform:translate(-1px,-1px);box-shadow:4px 4px 0 #0096c7;}
+.opt.sel{background:#ff8c00;color:#fff;border-color:#c95f00;box-shadow:3px 3px 0 #c95f00;}
 .opt:disabled{cursor:default;}
 
-/* result */
-.res-title{font-family:'DotGothic16',monospace;font-size:16px;color:#0b3d6e;margin-bottom:4px;text-align:center;}
-.res-class{font-size:22px;font-weight:700;color:#e65100;margin:4px 0 6px;text-align:center;}
-.res-badge{display:inline-block;background:#fff9c4;border:2px solid #ffc107;border-radius:20px;
-  font-size:12px;color:#6d4c00;padding:3px 14px;margin-bottom:10px;}
-.res-desc{font-size:13px;color:#333;line-height:1.65;margin-bottom:14px;text-align:left;}
-.class-box{background:#e3f2fd;border:2px solid #1565c0;border-radius:8px;padding:12px 14px;
-  margin-bottom:10px;box-shadow:3px 3px 0 #1565c0;}
-.cb-name{font-size:15px;font-weight:700;color:#0d47a1;margin-bottom:2px;}
-.cb-target{font-size:12px;color:#1565c0;margin-bottom:4px;}
-.cb-bullets{font-size:12px;color:#333;line-height:1.6;padding-left:1px;}
-.cb-time{font-size:11px;color:#555;margin-top:4px;}
-.btn-retry{font-family:'DotGothic16',monospace;font-size:13px;background:#4fc3f7;color:#fff;
-  border:3px solid #0b3d6e;border-radius:6px;padding:8px 24px;cursor:pointer;
-  box-shadow:4px 4px 0 #0b3d6e;margin-top:14px;display:block;margin-left:auto;margin-right:auto;}
+.res-header{font-family:'Nunito',sans-serif;font-size:clamp(18px,5vw,22px);font-weight:900;color:#0077aa;text-align:center;margin-bottom:6px;}
+.res-name{font-family:'Nunito',sans-serif;font-size:clamp(20px,5.5vw,24px);font-weight:900;color:#ff8c00;text-align:center;margin:6px 0;}
+.res-badge{display:inline-block;background:#fff3e0;border:2px solid #ff8c00;border-radius:20px;font-size:clamp(12px,3vw,14px);font-weight:700;color:#c95f00;padding:4px 16px;}
+.res-desc{font-size:clamp(14px,3.5vw,15px);color:#003a57;line-height:1.75;margin:14px 0;text-align:left;}
+.cls-box{background:#e3f4fb;border:2.5px solid #0096c7;border-radius:12px;padding:clamp(13px,4vw,16px) clamp(14px,4vw,18px);box-shadow:3px 3px 0 #0077aa;}
+.cls-name{font-family:'Nunito',sans-serif;font-size:clamp(16px,4.5vw,19px);font-weight:900;color:#0077aa;margin-bottom:4px;}
+.cls-target{font-size:clamp(12px,3vw,14px);font-weight:700;color:#005f8a;margin-bottom:8px;}
+.cls-bullets{font-size:clamp(13px,3.3vw,14px);color:#003a57;line-height:1.8;white-space:pre-line;}
+.cls-time{font-size:clamp(12px,3vw,13px);font-weight:700;color:#ff8c00;margin-top:8px;}
+.btn-retry{
+  display:block;margin:clamp(14px,4vw,18px) auto 0;
+  font-family:'Nunito',sans-serif;font-size:clamp(14px,4vw,16px);font-weight:900;
+  background:#0096c7;color:#fff;border:3px solid #005f8a;border-radius:40px;
+  padding:clamp(10px,2.5vw,12px) clamp(28px,7vw,36px);
+  cursor:pointer;box-shadow:4px 4px 0 #005f8a;transition:transform .1s;
+}
+.btn-retry:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #005f8a;}
 </style>
 
 <div class="wrap" id="app">
+  <div class="sky"></div>
+  <div class="water"></div>
+  <div class="sand"></div>
+  <div class="sand2"></div>
   <div class="sun"></div>
-  <svg class="clouds" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
-    <rect x="28" y="24" width="80" height="18" fill="white" opacity=".8" rx="2"/>
-    <rect x="18" y="32" width="100" height="16" fill="white" opacity=".8" rx="2"/>
-    <rect x="36" y="16" width="48" height="16" fill="white" opacity=".8" rx="2"/>
-    <rect x="290" y="18" width="70" height="14" fill="white" opacity=".65" rx="2"/>
-    <rect x="280" y="26" width="90" height="14" fill="white" opacity=".65" rx="2"/>
-    <rect x="490" y="30" width="60" height="12" fill="white" opacity=".55" rx="2"/>
-    <rect x="480" y="38" width="78" height="12" fill="white" opacity=".55" rx="2"/>
+
+  <svg class="cloud c1" width="90" height="34" viewBox="0 0 90 34">
+    <rect x="8" y="16" width="74" height="14" fill="white" opacity=".9" rx="2"/>
+    <rect x="18" y="8" width="52" height="14" fill="white" opacity=".9" rx="2"/>
+    <rect x="28" y="2" width="28" height="12" fill="white" opacity=".9" rx="2"/>
   </svg>
-  <div class="fish1">🐠</div>
-  <div class="fish2">🐟</div>
-  <svg class="wave-abs" viewBox="0 0 680 20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <rect x="0" y="0" width="8" height="8" fill="#29b6f6"/><rect x="16" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="32" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="40" y="8" width="8" height="8" fill="#29b6f6"/>
-    <rect x="56" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="72" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="80" y="8" width="8" height="8" fill="#4fc3f7"/><rect x="96" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="112" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="128" y="8" width="8" height="8" fill="#29b6f6"/>
-    <rect x="144" y="0" width="8" height="8" fill="#29b6f6"/><rect x="160" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="176" y="8" width="8" height="8" fill="#29b6f6"/><rect x="192" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="208" y="0" width="8" height="8" fill="#29b6f6"/><rect x="224" y="8" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="240" y="0" width="8" height="8" fill="#29b6f6"/><rect x="256" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="272" y="8" width="8" height="8" fill="#29b6f6"/><rect x="288" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="304" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="320" y="8" width="8" height="8" fill="#29b6f6"/>
-    <rect x="336" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="352" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="368" y="8" width="8" height="8" fill="#4fc3f7"/><rect x="384" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="400" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="416" y="8" width="8" height="8" fill="#29b6f6"/>
-    <rect x="432" y="0" width="8" height="8" fill="#29b6f6"/><rect x="448" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="464" y="8" width="8" height="8" fill="#29b6f6"/><rect x="480" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="496" y="0" width="8" height="8" fill="#29b6f6"/><rect x="512" y="8" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="528" y="0" width="8" height="8" fill="#29b6f6"/><rect x="544" y="0" width="8" height="8" fill="#4fc3f7"/>
-    <rect x="560" y="8" width="8" height="8" fill="#29b6f6"/><rect x="576" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="592" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="608" y="8" width="8" height="8" fill="#29b6f6"/>
-    <rect x="624" y="0" width="8" height="8" fill="#4fc3f7"/><rect x="640" y="0" width="8" height="8" fill="#29b6f6"/>
-    <rect x="656" y="8" width="8" height="8" fill="#4fc3f7"/><rect x="672" y="0" width="8" height="8" fill="#29b6f6"/>
+  <svg class="cloud c2" width="72" height="28" viewBox="0 0 72 28">
+    <rect x="6" y="14" width="60" height="12" fill="white" opacity=".85" rx="2"/>
+    <rect x="16" y="6" width="38" height="12" fill="white" opacity=".85" rx="2"/>
   </svg>
+  <svg class="cloud c3" width="62" height="24" viewBox="0 0 62 24">
+    <rect x="4" y="12" width="54" height="10" fill="white" opacity=".8" rx="2"/>
+    <rect x="12" y="4" width="32" height="10" fill="white" opacity=".8" rx="2"/>
+  </svg>
+
+  <div class="bird">🕊️</div>
+  <div class="fish">🐠</div>
+  <div class="fish fish2">🐟</div>
+  <svg class="pxwave" viewBox="0 0 400 14" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" id="pxwave"></svg>
+  <div class="decor">⛱️</div>
+  <div class="decor2">🏄</div>
+  <div class="crab">🦀</div>
 
   <div class="logo-bar"><span class="logo-txt">🏫 POINT JUNIOR ACADEMY</span></div>
 
-  <!-- START -->
   <div class="card" id="sc-start" style="text-align:center;">
-    <div class="t-pixel">🌊 여름방학 특강<br>나에게 맞는 수업은? 🌊</div>
-    <div class="t-sub" style="margin-top:8px;">딱 7문제만 풀면<br>나에게 꼭 맞는 수업 하나를 추천해드려요!</div>
-    <button class="btn-go" onclick="startQuiz()">▶ 시작하기</button>
+    <div class="s-title">☀️ 여름방학 특강<br>내 수업 찾기 🌊</div>
+    <div class="s-sub">딱 7문제만 풀면<br>나에게 꼭 맞는 수업 하나를 알려드려요!</div>
+    <button class="btn-start" onclick="startQuiz()">▶ 시작하기!</button>
   </div>
 
-  <!-- QUIZ -->
   <div class="card hidden" id="sc-quiz">
     <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
-    <div class="q-lbl" id="qlbl"></div>
-    <span class="q-emo" id="qemo"></span>
-    <div class="q-txt" id="qtxt"></div>
+    <div class="qlbl" id="qlbl"></div>
+    <span class="qemo" id="qemo"></span>
+    <div class="qtxt" id="qtxt"></div>
     <div class="opts" id="qopts"></div>
   </div>
 
-  <!-- RESULT -->
   <div class="card hidden" id="sc-result">
-    <div class="res-title" id="res-fanfare">🎉 짜잔! 결과 발표! 🎉</div>
-    <div class="res-class" id="res-cname"></div>
-    <div style="text-align:center;"><span class="res-badge" id="res-target"></span></div>
+    <div class="res-header">🎉 짜잔~ 결과 발표! 🎉</div>
+    <div class="res-name" id="res-name"></div>
+    <div style="text-align:center;margin-bottom:12px;"><span class="res-badge" id="res-target"></span></div>
     <div class="res-desc" id="res-desc"></div>
-    <div class="class-box" id="res-box"></div>
+    <div class="cls-box" id="res-box"></div>
     <button class="btn-retry" onclick="resetQuiz()">↩ 다시 테스트하기</button>
   </div>
 </div>
 
 <script>
-const Qs = [
-  {
-    id:'q1', emoji:'📊',
-    txt:'이번 학교 영어 시험,\n몇 점 정도 받았어요?',
-    opts:[
-      {t:'90점 이상 🌟', gram:1, voc:1, lv:1},
-      {t:'75~89점 👍', gram:0, voc:0, lv:0},
-      {t:'60~74점 😅', gram:-1, voc:-1, lv:-1},
-      {t:'59점 이하… 😶', gram:-2, voc:-2, lv:-2}
-    ]
-  },
-  {
-    id:'q2', emoji:'🤔',
-    txt:'영어에서 어떤 게 더 힘들어요?',
-    opts:[
-      {t:'문장 구조·문법이 어려워요 📐', gram:-2, voc:0, lv:0},
-      {t:'단어를 너무 몰라요 📖', gram:0, voc:-2, lv:0},
-      {t:'둘 다 힘들어요 😵', gram:-1, voc:-1, lv:0},
-      {t:'사실 둘 다 괜찮아요 😎', gram:1, voc:1, lv:0}
-    ]
-  },
-  {
-    id:'q3', emoji:'🎯',
-    txt:'이번 여름방학 영어 목표는?',
-    opts:[
-      {t:'내신 성적 확 올리기!', gram:0, voc:0, lv:1},
-      {t:'기초를 처음부터 탄탄히 다지기', gram:0, voc:0, lv:-1},
-      {t:'어렵고 복잡한 문장 마스터하기', gram:0, voc:0, lv:2},
-      {t:'일단 뭐라도 시작해보기 🌱', gram:0, voc:0, lv:-1}
-    ]
-  },
-  {
-    id:'q4', emoji:'🐠',
-    txt:'나는 수업 시간에 어떤 타입?\n(솔직하게!)',
-    opts:[
-      {t:'자꾸자꾸 졸리는 타입 😴', gram:0, voc:0, lv:0},
-      {t:'딴생각하다 정신 차리는 타입 🌙', gram:0, voc:0, lv:0},
-      {t:'그래도 열심히 듣는 타입 🔥', gram:0, voc:0, lv:1},
-      {t:'선생님보다 먼저 이해하는 타입 🧠', gram:0, voc:0, lv:1}
-    ]
-  },
-  {
-    id:'q5', emoji:'📝',
-    txt:'이 단어들 중 뜻을 아는 게 몇 개?\n[analyze / contrast / evidence / circumstances]',
-    opts:[
-      {t:'다 알아요! 쉬운데? 😏', gram:0, voc:3, lv:1},
-      {t:'2~3개는 알 것 같아요', gram:0, voc:1, lv:0},
-      {t:'1개 정도만 알아요', gram:0, voc:-1, lv:0},
-      {t:'하나도 모르겠는데요 😶', gram:0, voc:-2, lv:-1}
-    ]
-  },
-  {
-    id:'q6', emoji:'🔍',
-    txt:'다음 문장에서 틀린 부분을 찾을 수 있어요?\n"She don\'t like the movie that she watched it yesterday."',
-    opts:[
-      {t:'두 군데 다 보여요! (don\'t→doesn\'t, it 삭제)', gram:3, voc:0, lv:1},
-      {t:'하나는 찾았어요 (don\'t→doesn\'t)', gram:1, voc:0, lv:0},
-      {t:'틀린 거 맞아요? 잘 모르겠어요 🤔', gram:-1, voc:0, lv:0},
-      {t:'문장 해석도 잘 안 돼요 😅', gram:-2, voc:0, lv:-1}
-    ]
-  },
-  {
-    id:'q7', emoji:'🏖️',
-    txt:'방학 동안 영어 공부,\n어느 정도 할 생각이에요?',
-    opts:[
-      {t:'주 3회 이상, 제대로 할 거예요! 💪', gram:0, voc:0, lv:1},
-      {t:'수업만 열심히 들을게요', gram:0, voc:0, lv:0},
-      {t:'솔직히 방학인데… 쉬고 싶긴 해요 🌴', gram:0, voc:0, lv:0},
-      {t:'수업이 재밌으면 열심히 할 것 같아요 🤩', gram:0, voc:0, lv:0}
-    ]
+(function(){
+  const pw=document.getElementById('pxwave');
+  let s='';
+  for(let x=0;x<400;x+=14){
+    const y=x%28===0?0:5;
+    s+=`<rect x="${x}" y="${y}" width="10" height="7" fill="${x%28===0?'#48cae4':'#0096c7'}" rx="1"/>`;
   }
+  pw.innerHTML=s;
+})();
+
+const Qs=[
+  {emoji:'📊',txt:'이번 학교 영어 시험,\n몇 점 정도 받았어요?',opts:[
+    {t:'90점 이상 🌟',g:1,v:1,l:1},{t:'75~89점 👍',g:0,v:0,l:0},
+    {t:'60~74점 😅',g:-1,v:-1,l:-1},{t:'59점 이하… 😶',g:-2,v:-2,l:-2}]},
+  {emoji:'🤔',txt:'영어에서 어떤 게 더 힘들어요?',opts:[
+    {t:'문장 구조·문법이 어려워요 📐',g:-2,v:0,l:0},{t:'단어를 너무 몰라요 📖',g:0,v:-2,l:0},
+    {t:'둘 다 힘들어요 😵',g:-1,v:-1,l:0},{t:'사실 둘 다 괜찮아요 😎',g:1,v:1,l:0}]},
+  {emoji:'🎯',txt:'이번 여름방학 영어 목표는?',opts:[
+    {t:'내신 성적 확 올리기!',g:0,v:0,l:1},{t:'기초를 처음부터 탄탄히 다지기',g:0,v:0,l:-1},
+    {t:'어렵고 복잡한 문장 마스터하기',g:0,v:0,l:2},{t:'일단 뭐라도 시작해보기 🌱',g:0,v:0,l:-1}]},
+  {emoji:'😴',txt:'나는 수업 시간에 어떤 타입?\n(솔직하게!)',opts:[
+    {t:'자꾸자꾸 졸리는 타입 😴',g:0,v:0,l:0},{t:'딴생각하다 퍼뜩 정신 차리는 타입 🌙',g:0,v:0,l:0},
+    {t:'그래도 열심히 듣는 타입 🔥',g:0,v:0,l:1},{t:'선생님보다 먼저 이해하는 타입 🧠',g:0,v:0,l:1}]},
+  {emoji:'📝',txt:'이 단어들 중 뜻을 아는 게 몇 개?\n[ analyze / contrast / evidence / circumstances ]',opts:[
+    {t:'다 알아요! 쉬운데? 😏',g:0,v:3,l:1},{t:'2~3개는 알 것 같아요',g:0,v:1,l:0},
+    {t:'1개 정도만 알아요',g:0,v:-1,l:0},{t:'하나도 모르겠는데요 😶',g:0,v:-2,l:-1}]},
+  {emoji:'🔍',txt:'다음 문장에서 틀린 부분을 찾을 수 있어요?\n"She don\'t like the movie that she watched it yesterday."',opts:[
+    {t:'두 군데 다 보여요! (don\'t→doesn\'t, it 삭제)',g:3,v:0,l:1},
+    {t:'하나는 찾았어요 (don\'t→doesn\'t)',g:1,v:0,l:0},
+    {t:'틀린 건지 잘 모르겠어요 🤔',g:-1,v:0,l:0},
+    {t:'문장 해석도 잘 안 돼요 😅',g:-2,v:0,l:-1}]},
+  {emoji:'🏖️',txt:'방학 동안 영어 공부,\n어느 정도 할 생각이에요?',opts:[
+    {t:'주 3회 이상, 제대로 할 거예요! 💪',g:0,v:0,l:1},
+    {t:'수업만 열심히 들을게요',g:0,v:0,l:0},
+    {t:'솔직히 방학인데… 쉬고 싶긴 해요 🌴',g:0,v:0,l:0},
+    {t:'수업이 재밌으면 열심히 할 것 같아요 🤩',g:0,v:0,l:0}]}
 ];
 
-// 4 classes
-const CLASSES = {
-  basic_gram: {
-    name:'📘 1. BASIC Grammar',
-    target:'중등 예비 1~2학년 대상',
-    desc:'문법이 뭔지 잘 모르겠다면 여기서부터 시작해요! 형식, 시제, 부정사 등 핵심 문법을 차근차근 문장에 적용하며 익혀요.',
-    bullets:'✔ 형식 / 시제 / 부정사 / 동명사 / 분사 / 수동태 / 관계사 / 비교표현\n✔ 각 파트 세부 내용을 배우고 문장에 반복 적용',
-    time:'수업 시간: 월·수·금 11:30~1:00'
-  },
-  buildup_gram: {
-    name:'📗 2. Build UP Grammar',
-    target:'중등 예비 2~3학년 대상',
-    desc:'기초 문법은 알지만 복잡한 문장이 약하다면 여기! 문장 풀이와 다양한 구조를 패턴으로 익혀요.',
-    bullets:'✔ 시제 / 수동태 / 분사 / 부정사·동명사 / 관계사 / 접속사\n✔ that 용법 / 전치사·접속사 심화\n✔ 문장 풀이로 패턴 완성',
-    time:'수업 시간: 월·수·금 1:00~2:30'
-  },
-  levelup_gram: {
-    name:'📙 3. Level UP Grammar',
-    target:'중등 예비 1~2학년 대상',
-    desc:'기본 문법은 되는데 실제 문장 적용이 어렵다면! 이론을 문장에 직접 적용하며 관련 문장을 통째로 익혀요.',
-    bullets:'✔ 형식 / 시제 / 부정사 / 동명사 / 분사 / 수동태 / 관계사 / 비교표현\n✔ 기초적 이론을 문장에 적용, 관련 문장 통암기',
-    time:'수업 시간: 화·목 11:00~1:00'
-  },
-  buildup_voca: {
-    name:'📒 4. Build UP VOCA',
-    target:'중등 예비 2~3학년 대상',
-    desc:'단어가 발목을 잡는다면 여기! 빈칸 추론 문제와 중요 어휘를 집중적으로 파고들어요.',
-    bullets:'✔ 빈칸 추론 문제 집중 훈련\n✔ 빈칸에 필요한 단어 추론 및 중요 어휘 학습',
-    time:'수업 시간: 화·목 1:00~3:00'
-  }
+const CLS={
+  basic_gram:{name:'📘 1. BASIC Grammar',target:'중등 예비 1~2학년 대상',
+    desc:'문법이 뭔지 잘 모르겠다면 여기서부터! 핵심 문법을 차근차근 문장에 적용하며 익혀요.',
+    bullets:'✔ 형식 / 시제 / 부정사 / 동명사\n✔ 분사 / 수동태 / 관계사 / 비교표현\n✔ 각 파트 세부 내용을 배우고 문장에 반복 적용',
+    time:'월·수·금  11:30 ~ 1:00'},
+  buildup_gram:{name:'📗 2. Build UP Grammar',target:'중등 예비 2~3학년 대상',
+    desc:'기초 문법은 알지만 복잡한 문장이 약하다면 여기! 다양한 구조를 패턴으로 익혀요.',
+    bullets:'✔ 시제 / 수동태 / 분사 / 부정사·동명사\n✔ 관계사 / that 용법 / 접속사 심화\n✔ 문장 풀이로 패턴 완성',
+    time:'월·수·금  1:00 ~ 2:30'},
+  levelup_gram:{name:'📙 3. Level UP Grammar',target:'중등 예비 1~2학년 대상',
+    desc:'기본 문법은 되는데 실제 문장 적용이 어렵다면! 이론을 문장에 직접 적용하며 통암기로 익혀요.',
+    bullets:'✔ 형식 / 시제 / 부정사 / 동명사\n✔ 분사 / 수동태 / 관계사 / 비교표현\n✔ 기초 이론 적용 + 관련 문장 통암기',
+    time:'화·목  11:00 ~ 1:00'},
+  buildup_voca:{name:'📒 4. Build UP VOCA',target:'중등 예비 2~3학년 대상',
+    desc:'단어가 발목을 잡는다면 여기! 빈칸 추론과 중요 어휘를 집중적으로 파고들어요.',
+    bullets:'✔ 빈칸 추론 문제 집중 훈련\n✔ 빈칸에 필요한 단어 추론\n✔ 중요 어휘 집중 학습',
+    time:'화·목  1:00 ~ 3:00'}
 };
 
-let scores={gram:0,voc:0,lv:0}, cur=0;
-
-function show(id){
-  ['sc-start','sc-quiz','sc-result'].forEach(s=>document.getElementById(s).classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-}
-
-function startQuiz(){scores={gram:0,voc:0,lv:0};cur=0;show('sc-quiz');renderQ();}
-
+let sc={g:0,v:0,l:0},cur=0;
+function show(id){['sc-start','sc-quiz','sc-result'].forEach(s=>document.getElementById(s).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
+function startQuiz(){sc={g:0,v:0,l:0};cur=0;show('sc-quiz');renderQ();}
 function renderQ(){
   const q=Qs[cur];
   document.getElementById('qlbl').textContent=`Q${cur+1} / ${Qs.length}`;
   document.getElementById('qemo').textContent=q.emoji;
   document.getElementById('qtxt').textContent=q.txt;
   document.getElementById('prog').style.width=Math.round((cur/Qs.length)*100)+'%';
-  const c=document.getElementById('qopts');
-  c.innerHTML='';
+  const c=document.getElementById('qopts');c.innerHTML='';
   q.opts.forEach((o,i)=>{
-    const b=document.createElement('button');
-    b.className='opt'; b.textContent=o.t;
-    b.onclick=()=>pick(i);
-    c.appendChild(b);
+    const b=document.createElement('button');b.className='opt';b.textContent=o.t;b.onclick=()=>pick(i);c.appendChild(b);
   });
 }
-
 function pick(i){
-  const o=Qs[cur].opts[i];
-  scores.gram+=o.gram; scores.voc+=o.voc; scores.lv+=o.lv;
-  const bs=document.querySelectorAll('.opt');
-  bs[i].classList.add('sel');
-  bs.forEach(b=>b.disabled=true);
-  setTimeout(()=>{cur++;cur<Qs.length?renderQ():showResult();},400);
+  const o=Qs[cur].opts[i];sc.g+=o.g;sc.v+=o.v;sc.l+=o.l;
+  document.querySelectorAll('.opt')[i].classList.add('sel');
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  setTimeout(()=>{cur++;cur<Qs.length?renderQ():showResult();},420);
 }
-
 function showResult(){
   document.getElementById('prog').style.width='100%';
-
-  // decide class
+  const g=sc.g,v=sc.v,l=sc.l;
   let cls;
-  const g=scores.gram, v=scores.voc, l=scores.lv;
-
-  // voca priority
-  if(v<=-2 && g>=-1){ cls='buildup_voca'; }
-  // high level → buildup grammar
-  else if(l>=2 || (g>=3 && l>=0)){ cls='buildup_gram'; }
-  // low level basic → basic grammar
-  else if(l<=-2 || (g<=-3)){ cls='basic_gram'; }
-  // mid level, gram weak → level up
-  else if(g<=-1 && l>=-1 && l<=1){ cls='levelup_gram'; }
-  // mid level, voca weak
-  else if(v<=-1){ cls='buildup_voca'; }
-  // mid level good gram
-  else if(g>=2 && l>=1){ cls='buildup_gram'; }
-  // default
-  else{ cls='levelup_gram'; }
-
-  const C=CLASSES[cls];
-  playFanfare();
-
-  document.getElementById('res-cname').textContent=C.name;
+  if(v<=-2&&g>=-1) cls='buildup_voca';
+  else if(l>=2||(g>=3&&l>=0)) cls='buildup_gram';
+  else if(l<=-2||g<=-3) cls='basic_gram';
+  else if(g<=-1&&l>=-1&&l<=1) cls='levelup_gram';
+  else if(v<=-1) cls='buildup_voca';
+  else if(g>=2&&l>=1) cls='buildup_gram';
+  else cls='levelup_gram';
+  const C=CLS[cls];
+  fanfare();
+  document.getElementById('res-name').textContent=C.name;
   document.getElementById('res-target').textContent=C.target;
   document.getElementById('res-desc').textContent=C.desc;
   document.getElementById('res-box').innerHTML=
-    `<div class="cb-name">${C.name}</div>`+
-    `<div class="cb-target">${C.target}</div>`+
-    `<div class="cb-bullets" style="white-space:pre-line">${C.bullets}</div>`+
-    `<div class="cb-time">🕐 ${C.time}</div>`;
-
+    `<div class="cls-name">${C.name}</div>`+
+    `<div class="cls-target">${C.target}</div>`+
+    `<div class="cls-bullets">${C.bullets}</div>`+
+    `<div class="cls-time">🕐 ${C.time}</div>`;
   show('sc-result');
 }
-
-function playFanfare(){
+function fanfare(){
   try{
     const ctx=new(window.AudioContext||window.webkitAudioContext)();
-    const notes=[523,659,784,1047,784,1047];
-    const times=[0,.12,.24,.36,.5,.62];
-    notes.forEach((f,i)=>{
-      const o=ctx.createOscillator();
-      const g=ctx.createGain();
-      o.connect(g); g.connect(ctx.destination);
-      o.type='square';
-      o.frequency.value=f;
-      g.gain.setValueAtTime(0.18,ctx.currentTime+times[i]);
-      g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+times[i]+0.18);
-      o.start(ctx.currentTime+times[i]);
-      o.stop(ctx.currentTime+times[i]+0.2);
+    [[523,0],[659,.13],[784,.26],[1047,.39],[784,.52],[1047,.65],[1319,.78]].forEach(([f,t])=>{
+      const o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);o.type='square';o.frequency.value=f;
+      g.gain.setValueAtTime(.15,ctx.currentTime+t);
+      g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.19);
+      o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.2);
     });
   }catch(e){}
 }
-
 function resetQuiz(){show('sc-start');}
 </script>
