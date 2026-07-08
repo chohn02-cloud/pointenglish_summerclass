@@ -1117,11 +1117,13 @@ async function saveResultToFirebase(code, typeName, planScore, dislikesEnglish) 
     }
     const docData = {
       childName: childName,
+      name: childName,
       code: code,
       typeName: typeName,
       axisScores: scores,
       planExecutionScore: planScore,
       dislikesEnglish: dislikesEnglish,
+      answers: Array.from(answers),
       createdAt: window._pcServerTimestamp()
     };
     await window._pcAddDoc(
